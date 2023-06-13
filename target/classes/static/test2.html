@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>堆叠面积图</title>
+
+    <script src="./js/echarts.js"></script>
+
+</head>
+
+<style>
+    #container {
+        width: 70vw;
+        height: 70vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<body>
+<div id="container"></div>
+<script>
+    //初始化echarts实例
+    var chart = echarts.init(document.getElementById('container'));
+
+    // 指定图表的配置项和数据
+    var option =
+        {
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data: ["面积图1", "面积图2", "面积图3"]
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            series: [
+                {
+                    data: (function ()
+                    {
+                        var data = [];
+                        for (let i = 0; i < 7; i++)
+                        {
+                            data.push(Math.random())
+                        }
+                        return data;
+                    }()),
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    name: "面积图1"
+                },
+                {
+                    data: (function ()
+                    {
+                        var data = [];
+                        for (let i = 0; i < 7; i++)
+                        {
+                            data.push(Math.random())
+                        }
+                        return data;
+                    }()),
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    name: "面积图2"
+                },
+                {
+                    data: (function ()
+                    {
+                        var data = [];
+                        for (let i = 0; i < 7; i++)
+                        {
+                            data.push(Math.random())
+                        }
+                        return data;
+                    }()),
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    name: "面积图3"
+                },
+            ]
+        };
+
+    //使用刚指定的配置项和数据显示图表
+    chart.setOption(option);
+
+</script>
+
+</body>
+</html>
